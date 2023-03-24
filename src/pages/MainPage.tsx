@@ -4,6 +4,7 @@ import { Button, Image } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 import CatImage from '../assets/catImage.jpg'
+import Header from '../components/Header'
 
 export default function MainPage(): React.ReactElement {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ export default function MainPage(): React.ReactElement {
   return (
     <>
       <Warpper>
-        <Header>🐱 예비 집사 판별기 🐱</Header>
+        <Header type="main" />
         <ContentsWrapper>
           <Title>나에게 맞는 주인님은?</Title>
           <LogoImage>
@@ -33,7 +34,7 @@ export default function MainPage(): React.ReactElement {
             onClick={handleClickButton}
             style={{ fontSize: 25, marginTop: 20, marginBottom: 20 }}
           >
-            테스크 시작하기
+            테스트 시작하기
           </Button>
         </ContentsWrapper>
       </Warpper>
@@ -50,13 +51,7 @@ const Warpper = styled.div`
   background-color: #fffacd;
   font-family: 'yg-jalnan';
 `
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffa07a;
-  font-size: 40pt;
-`
+
 const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
