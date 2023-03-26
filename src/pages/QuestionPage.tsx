@@ -6,14 +6,29 @@ import { questionData } from '../store/question/questionData'
 import Header from '../components/Header'
 
 export default function QuestionPage(): React.ReactElement {
+  const [questionNo, setQuestionNo] = React.useState(0)
+  const handleClickAnswer = () => {
+    setQuestionNo(questionNo + 1)
+  }
+
   return (
     <Warpper>
-      <Header type="progress" />
+      <Header type="progress" questionNo={questionNo} />
       <ContentsWrapper>
-        <Title>{questionData[0].title}</Title>
+        <Title>{questionData[questionNo].title}</Title>
         <ButtonGroup>
-          <Button>{questionData[0].answera}</Button>
-          <Button>{questionData[0].answerb}</Button>
+          <Button
+            style={{ marginRight: '10px', fontSize: '18pt' }}
+            onClick={handleClickAnswer}
+          >
+            {questionData[questionNo].answera}
+          </Button>
+          <Button
+            style={{ marginLeft: '10px', fontSize: '18pt' }}
+            onClick={handleClickAnswer}
+          >
+            {questionData[questionNo].answerb}
+          </Button>
         </ButtonGroup>
       </ContentsWrapper>
     </Warpper>
@@ -35,14 +50,16 @@ const ContentsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  padding: 20px;
 `
 const Title = styled.div`
   margin-bottom: 20px;
-  font-size: 20pt;
+  font-size: 25pt;
 `
 const ButtonGroup = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding: 10px;
 `

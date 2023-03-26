@@ -16,7 +16,7 @@ export default function MainPage(): React.ReactElement {
   return (
     <>
       <Warpper>
-        <Header type="main" />
+        <Header type="main" questionNo={0} />
         <ContentsWrapper>
           <Title>나에게 맞는 주인님은?</Title>
           <LogoImage>
