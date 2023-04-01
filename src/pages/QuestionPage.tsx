@@ -1,14 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 import { questionData } from '../store/question/questionData'
 import Header from '../components/Header'
 
 export default function QuestionPage(): React.ReactElement {
   const [questionNo, setQuestionNo] = React.useState(0)
-  const handleClickAnswer = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+  const [totalScore, setTotalScore] = React.useState([
+    { id: 'EI', score: 0 },
+    { id: 'SN', score: 0 },
+    { id: 'TF', score: 0 },
+    { id: 'JP', score: 0 },
+  ])
+  const navigate = useNavigate()
+
+  const hanedleClickAnswer = (ans: number, type: string) => {
     setQuestionNo(questionNo + 1)
+    const newScore = totalScore.map((v) =>
+      v.id === type ? { id: v.id, score: v.score + ans } : v,
+    )
+    setTotalScore(newScore)
+
+    if (questionNo + 1 === questionData.length) {
+      navigate('/result')
+    }
   }
 
   return (
@@ -18,14 +36,28 @@ export default function QuestionPage(): React.ReactElement {
         <Title>{questionData[questionNo].title}</Title>
         <ButtonGroup>
           <Button
-            style={{ marginRight: '10px', fontSize: '18pt' }}
-            onClick={handleClickAnswer}
+            style={{
+              width: '45%',
+              minHeight: '200px',
+              marginRight: '10px',
+              fontSize: '18pt',
+            }}
+            onClick={() => {
+              hanedleClickAnswer(1, questionData[questionNo].type)
+            }}
           >
             {questionData[questionNo].answera}
           </Button>
           <Button
-            style={{ marginLeft: '10px', fontSize: '18pt' }}
-            onClick={handleClickAnswer}
+            style={{
+              width: '45%',
+              minHeight: '200px',
+              marginLeft: '10px',
+              fontSize: '18pt',
+            }}
+            onClick={() => {
+              hanedleClickAnswer(0, questionData[questionNo].type)
+            }}
           >
             {questionData[questionNo].answerb}
           </Button>
