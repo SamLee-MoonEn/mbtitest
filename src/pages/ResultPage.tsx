@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Image } from 'react-bootstrap'
-import { useSearchParams } from 'react-router-dom'
+import { Image } from 'react-bootstrap'
+import { Link, useSearchParams } from 'react-router-dom'
 
 import { ResultData } from '../store/result/resultData'
 import Header from '../components/Header'
@@ -41,6 +41,9 @@ export default function ResultPage(): React.ReactElement {
         <FriendCat>
           나의 고양이와 잘맞는 형제묘로는 {friendCat?.name}를 추천드려요.
         </FriendCat>
+        <Link to={'/'} className="btn btn-success btn-lg btn-block">
+          다시하기
+        </Link>
       </Warpper>
     </>
   )
@@ -51,7 +54,7 @@ const Warpper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #fffacd;
   font-family: 'yg-jalnan';
 `
@@ -88,4 +91,5 @@ const Desc = styled.div`
 const FriendCat = styled.div`
   color: blue;
   font-size: 20pt;
+  margin-bottom: 20px;
 `
