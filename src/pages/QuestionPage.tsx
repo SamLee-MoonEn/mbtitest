@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 
 import { questionData } from '../store/question/questionData'
 import Header from '../components/Header'
@@ -25,7 +25,18 @@ export default function QuestionPage(): React.ReactElement {
     setTotalScore(newScore)
 
     if (questionNo + 1 === questionData.length) {
-      navigate('/result')
+      const mbti = newScore.reduce((prev, cur) => {
+        return (
+          prev +
+          (cur.score >= 2 ? cur.id.substring(0, 1) : cur.id.substring(1, 2))
+        )
+      }, '')
+      navigate({
+        pathname: '/result',
+        search: `?${createSearchParams({
+          mbti: mbti,
+        })}`,
+      })
     }
   }
 
