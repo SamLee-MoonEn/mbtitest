@@ -10,6 +10,7 @@ const Kakao = (window as any).Kakao
 export default function KaKaoShareButton(props: PropsType) {
   const url = 'https://mbticatmatch.netlify.app/'
   const resultUrl = window.location.href
+
   React.useEffect(() => {
     if (!Kakao.isInitialized) {
       Kakao.init('c5d0d7297693b4031a0adc55e7902f9a')

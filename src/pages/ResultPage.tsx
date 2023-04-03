@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import { ResultData } from '../store/result/resultData'
