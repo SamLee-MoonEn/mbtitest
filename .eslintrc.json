@@ -26,7 +26,8 @@
       { "ts": "never", "tsx": "never" }
     ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "import/resolver": {
