@@ -10,15 +10,14 @@ const Kakao = (window as any).Kakao
 export default function KaKaoShareButton(props: PropsType) {
   const url = 'https://mbticatmatch.netlify.app/'
   const resultUrl = window.location.href
-
   React.useEffect(() => {
-    if (!Kakao.isInitialized) {
+    if (!Kakao.isInitialized()) {
       Kakao.init('c5d0d7297693b4031a0adc55e7902f9a')
     }
   }, [])
   const shareKakao = () => {
     Kakao.Share.sendDefault({
-      objectType: 'text',
+      objectType: 'feed',
       content: {
         title: '🐱 예비 집사 판별기 🐱',
         description: `예비 집사님이 고양이를 키운다면 가장 잘맞는 고양이는 ${props.data.name}입니다.`,
