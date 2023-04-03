@@ -57,6 +57,7 @@ const Warpper = styled.div`
   height: 100%;
   background-color: #fffacd;
   font-family: 'yg-jalnan';
+  margin-bottom: 30px;
 `
 
 const ContentsWrapper = styled.div`
