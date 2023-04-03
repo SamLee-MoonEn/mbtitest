@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { IResult } from '../store/result/types'
@@ -12,9 +11,11 @@ export default function KaKaoShareButton(props: PropsType) {
   const url = 'https://mbticatmatch.netlify.app/'
   const resultUrl = window.location.href
   React.useEffect(() => {
-    KaKao.init('c5d0d7297693b4031a0adc55e7902f9a')
+    if (!Kakao.isInitialized) {
+      Kakao.init('c5d0d7297693b4031a0adc55e7902f9a')
+    }
   }, [])
-  const shareKaKao = () => {
+  const shareKakao = () => {
     Kakao.Share.sendDefault({
       objectType: 'text',
       content: {
@@ -38,7 +39,7 @@ export default function KaKaoShareButton(props: PropsType) {
     })
   }
   return (
-    <Button onClick={KaKaoShareButton} className="btn btn-danger btn-lg">
+    <Button onClick={shareKakao} className="btn btn-danger btn-lg">
       공유하기
     </Button>
   )
