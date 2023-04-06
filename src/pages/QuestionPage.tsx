@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from 'react-bootstrap'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 
 import { questionData } from '../store/question/questionData'
@@ -41,52 +40,47 @@ export default function QuestionPage(): React.ReactElement {
   }
 
   return (
-    <Warpper>
+    <div
+      className="overflow-auto"
+      style={{ backgroundColor: '#2A303C', height: '90vh' }}
+    >
       <Header type="progress" questionNo={questionNo} />
       <ContentsWrapper>
-        <Title>{questionData[questionNo].title}</Title>
+        <div className="text-lg sm:text-2xl md:text-3xl text-gray-300">
+          {questionData[questionNo].title}
+        </div>
         <ButtonGroup>
-          <Button
+          <button
+            className="btn btn-primary text-sm sm:text-lg md:text-2xl"
             style={{
               width: '45%',
               minHeight: '200px',
               marginRight: '10px',
-              fontSize: '18pt',
             }}
             onClick={() => {
               hanedleClickAnswer(1, questionData[questionNo].type)
             }}
           >
             {questionData[questionNo].answera}
-          </Button>
-          <Button
+          </button>
+          <button
+            className="btn btn-primary text-sm sm:text-lg md:text-2xl"
             style={{
               width: '45%',
               minHeight: '200px',
               marginLeft: '10px',
-              fontSize: '18pt',
             }}
             onClick={() => {
               hanedleClickAnswer(0, questionData[questionNo].type)
             }}
           >
             {questionData[questionNo].answerb}
-          </Button>
+          </button>
         </ButtonGroup>
       </ContentsWrapper>
-    </Warpper>
+    </div>
   )
 }
-
-const Warpper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-color: #fffacd;
-  font-family: 'yg-jalnan';
-`
 
 const ContentsWrapper = styled.div`
   display: flex;
@@ -95,10 +89,7 @@ const ContentsWrapper = styled.div`
   justify-content: center;
   padding: 20px;
 `
-const Title = styled.div`
-  margin-bottom: 20px;
-  font-size: 25pt;
-`
+
 const ButtonGroup = styled.div`
   width: 100%;
   display: flex;
