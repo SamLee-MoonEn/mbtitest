@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import { IResult } from '../store/result/types'
 
 interface PropsType {
@@ -39,8 +38,8 @@ export default function KaKaoShareButton(props: PropsType) {
     })
   }
   return (
-    <Button onClick={shareKakao} className="btn btn-danger btn-lg">
+    <button onClick={shareKakao} className="btn btn-primary btn-lg">
       공유하기
-    </Button>
+    </button>
   )
 }
