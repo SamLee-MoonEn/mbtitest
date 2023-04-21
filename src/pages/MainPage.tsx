@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import CatImage from '../assets/cats/anatoli.jpg'
+import CatImage from '../assets/cats/catImage.jpg'
 import Header from '../components/Header'
 
 export default function MainPage(): React.ReactElement {
